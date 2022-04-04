@@ -26,7 +26,7 @@ public class Menu extends JFrame {
 
 	public void submit() {
 		try {
-			int i = Integer.parseInt(age.getText());
+			int i = Integer.parseInt(age.getText().replaceAll("\n", ""));
 			if (i > 15 && !retake.isSelected()) {
 				error.setText("You are too old!");
 			}
@@ -131,8 +131,7 @@ public class Menu extends JFrame {
 		p1.setBounds(0, 0, 600, 50);
 		p2.setBounds(0, 50, 600, 50);
 		p3.setBounds(0, 100, 600, 50);
-		p4.setBounds(0, 150, 600, 10
-				0);
+		p4.setBounds(0, 150, 600, 100);
 	}
 
 }
