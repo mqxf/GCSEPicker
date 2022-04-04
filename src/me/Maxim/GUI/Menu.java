@@ -15,7 +15,10 @@ public class Menu extends JFrame {
 	JPanel p1;
 	JPanel p2;
 	JPanel p3;
+	JPanel p4;
 	JPanel mainPanel;
+	JCheckBox early;
+	JCheckBox retake;
 
 	public Menu() {
 		init();
@@ -24,14 +27,33 @@ public class Menu extends JFrame {
 	public void submit() {
 		try {
 			int i = Integer.parseInt(age.getText());
-			if (i > 15) {
+			if (i > 15 && !retake.isSelected()) {
 				error.setText("You are too old!");
 			}
-			else if (i < 14) {
+			else if (i > 30) {
+				error.setText("You are too old to retake GCSE!");
+			}
+			else if (i < 14 && !early.isSelected()) {
 				error.setText("You are too young!");
 			}
 			else {
-				error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
+				if (retake.isSelected() && early.isSelected()) {
+					if (i < 14) {
+						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE retake!");
+					}
+					else {
+						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE retake!");
+					}
+				}
+				else if (retake.isSelected()) {
+					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE retake!");
+				}
+				else if (early.isSelected()) {
+					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE!");
+				}
+				else {
+					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
+				}
 			}
 		}
 		catch (Exception e) {
@@ -54,13 +76,16 @@ public class Menu extends JFrame {
 		p1 = new JPanel();
 		p2 = new JPanel();
 		p3 = new JPanel();
+		p4 = new JPanel();
 		mainPanel = new JPanel();
 		p1.setOpaque(false);
 		p2.setOpaque(false);
 		p3.setOpaque(false);
+		p4.setOpaque(false);
 		p1.setSize(600, 50);
 		p2.setSize(600, 50);
 		p3.setSize(600, 50);
+		p4.setSize(600, 50);
 		mainPanel.setSize(600, 200);
 		mainPanel.setOpaque(false);
 		desc = new JLabel();
@@ -81,22 +106,32 @@ public class Menu extends JFrame {
 				submit();
 			}
 		});
+
+		early = new JCheckBox();
+		retake = new JCheckBox();
+		early.setText("Early GCSE");
+		retake.setText("Retake GCSE");
+
 		p2.add(subjects);
 		p2.add(age);
 		p2.add(submit);
-		p3.add(error);
+		p3.add(early);
+		p3.add(retake);
+		p4.add(error);
 
 		setSize(600, 200);
 
 		mainPanel.add(p1);
 		mainPanel.add(p2);
 		mainPanel.add(p3);
+		mainPanel.add(p4);
 		add(mainPanel);
 		setLayout(null);
 		mainPanel.setLayout(null);
 		p1.setBounds(0, 0, 600, 50);
 		p2.setBounds(0, 50, 600, 50);
 		p3.setBounds(0, 100, 600, 50);
+		p4.setBounds(0, 150, 600, 50);
 	}
 
 }
