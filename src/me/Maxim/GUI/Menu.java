@@ -85,8 +85,8 @@ public class Menu extends JFrame {
 		p1.setSize(600, 50);
 		p2.setSize(600, 50);
 		p3.setSize(600, 50);
-		p4.setSize(600, 50);
-		mainPanel.setSize(600, 200);
+		p4.setSize(600, 100);
+		mainPanel.setSize(600, 250);
 		mainPanel.setOpaque(false);
 		desc = new JLabel();
 		desc.setVisible(true);
@@ -119,7 +119,7 @@ public class Menu extends JFrame {
 		p3.add(retake);
 		p4.add(error);
 
-		setSize(600, 200);
+		setSize(600, 250);
 
 		mainPanel.add(p1);
 		mainPanel.add(p2);
@@ -131,7 +131,8 @@ public class Menu extends JFrame {
 		p1.setBounds(0, 0, 600, 50);
 		p2.setBounds(0, 50, 600, 50);
 		p3.setBounds(0, 100, 600, 50);
-		p4.setBounds(0, 150, 600, 50);
+		p4.setBounds(0, 150, 600, 10
+				0);
 	}
 
 }
