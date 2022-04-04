@@ -49,7 +49,12 @@ public class Menu extends JFrame {
 					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE retake!");
 				}
 				else if (early.isSelected()) {
-					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE!");
+					if (i > 13) {
+						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
+					}
+					else {
+						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE!");
+					}
 				}
 				else {
 					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
