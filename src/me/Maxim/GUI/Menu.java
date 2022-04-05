@@ -25,6 +25,8 @@ public class Menu extends JFrame {
 	}
 
 	public void submit() {
+		boolean entered = false;
+		String subject = subjects.getItemAt(subjects.getSelectedIndex());
 		try {
 			int i = Integer.parseInt(age.getText().replaceAll("\n", ""));
 			if (i > 15 && !retake.isSelected()) {
@@ -40,30 +42,41 @@ public class Menu extends JFrame {
 				if (retake.isSelected() && early.isSelected()) {
 					if (i < 14) {
 						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE retake!");
+						entered = true;
 					}
 					else {
 						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE retake!");
+						entered = true;
 					}
 				}
 				else if (retake.isSelected()) {
 					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE retake!");
+					entered = true;
 				}
 				else if (early.isSelected()) {
 					if (i > 13) {
 						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
+						entered = true;
 					}
 					else {
 						error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " early GCSE!");
+						entered = true;
 					}
 				}
 				else {
 					error.setText("Signed up for " + subjects.getItemAt(subjects.getSelectedIndex()) + " GCSE!");
+					entered = true;
 				}
 			}
 		}
 		catch (Exception e) {
 			error.setText("Age is not a valid number!");
 		}
+
+		if (entered) {
+			//We can send request to database here
+		}
+
 	}
 
 	public void exit() {
